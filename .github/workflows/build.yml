@@ -31,9 +31,10 @@ jobs:
               - 'PKGBUILD.inc'
 
   build:
-    if: github.event_name == 'workflow_dispatch'
+    needs: [detect]
+    if: always() && (github.event_name == 'workflow_dispatch'
      || needs.detect.outputs.git-build == 'true'
-     || needs.detect.outputs.release-build == 'true'
+     || needs.detect.outputs.release-build == 'true')
     runs-on: ubuntu-latest
     container:
       image: archlinux:base-devel
