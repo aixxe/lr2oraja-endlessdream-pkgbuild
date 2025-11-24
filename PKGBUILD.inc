@@ -36,7 +36,7 @@ _prepare() {
   sed -i '/^dependencies {/a \
     javafx { \
         version = libs.versions.javafx.get() \
-        modules = listOf("javafx.base", "javafx.graphics", "javafx.controls", "javafx.fxml") \
+        modules = listOf("javafx.base", "javafx.graphics", "javafx.controls", "javafx.fxml", "javafx.web") \
     }' core/build.gradle.kts
 
   # copy javafx wrapper class for main loader
