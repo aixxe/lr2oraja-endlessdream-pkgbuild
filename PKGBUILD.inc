@@ -6,8 +6,7 @@ url="https://github.com/seraxis/lr2oraja-endlessdream"
 license=('GPL-3.0-only')
 depends=('bash' 'java-runtime>=17')
 makedepends=('gradle' 'java-environment>=17' 'portaudio' 'git' 'cmake' 'gcc')
-optdepends=('portaudio: enables low-latency audio output options'
-            'gamescope: workaround for crashes on nvidia wayland environments')
+optdepends=('portaudio: enables low-latency audio output options')
 _javafx_version="21.0.8"
 _portaudio_java_commit="2ec5cc47d6f8abe85ddb09c34e69342bfe72c60b"
 _common_sources=("https://github.com/philburk/portaudio-java/archive/${_portaudio_java_commit}.tar.gz"
