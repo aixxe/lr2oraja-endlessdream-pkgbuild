@@ -70,8 +70,8 @@ jobs:
       - name: Setup build environment
         if: steps.should-build.outputs.build == 'true'
         run: |
-          # install latest jdk for building
-          pacman --sync --refresh --sysupgrade --noconfirm jdk-openjdk
+          # update system packages
+          pacman --sync --refresh --sysupgrade --noconfirm
 
           # enable passwordless sudo
           echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/99-nopasswd
