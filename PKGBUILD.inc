@@ -15,7 +15,7 @@ _common_sources=("https://github.com/philburk/portaudio-java/archive/${_portaudi
                  "${_pkgbase}-icon.png"
                  "MainLoaderEntrypoint.java")
 _common_sha256sums=('7a70d90d449fc9d91026c54e1d08303242749475ad20b30b5bfa45fc93f18043'
-                    '0fb85ffc6c70c6317b98e5472413df550d63da78654cb97a9e755f8f3b4018af'
+                    '872b9cb25857622aec70a8a1cd694a6c8b2c4f86ad4716c72862c290ec069cd8'
                     'bfa611672d6926830edc33d7845ce1430b415cf42325f565e609dc6997dcb3f9'
                     'fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d'
                     '95c603669e6a4864060fc976be349e345a8f320606286f7a830021243ababedb')
