@@ -12,6 +12,15 @@ export LD_LIBRARY_PATH="${BEATORAJA_INSTALL_DIR}/natives:${LD_LIBRARY_PATH:-}"
 export BEATORAJA_USER_DIR="${BEATORAJA_USER_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/${BEATORAJA_VARIANT}}"
 mkdir -p "${BEATORAJA_USER_DIR}" && cd "${BEATORAJA_USER_DIR}"
 
+# tests if a flag is supported by the java runtime
+test_flag() {
+  if java "$1" -version >/dev/null 2>&1; then
+    echo "$1"
+  else
+    echo ""
+  fi
+}
+
 # symlink default files to user directory
 setup_default_assets() {
   local asset_dirs=('defaultsound' 'folder' 'font' 'random')
@@ -57,6 +66,18 @@ build_java_options() {
     -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
     -Dfile.encoding="UTF-8"
   )
+
+  # prioritize using shenandoah GC...
+  GC_OPTION=$(test_flag "-XX:+UseShenandoahGC")
+
+  # ...if it's not available, try zgc instead
+  if [ -z "$GC_OPTION" ]; then
+    GC_OPTION=$(test_flag "-XX:+UseZGC")
+  fi
+
+  if [ -n "$GC_OPTION" ]; then
+    options+=("$GC_OPTION")
+  fi
 
   if [[ -n "${JDK_JAVA_OPTIONS}" ]]; then
     while IFS= read -r opt; do
