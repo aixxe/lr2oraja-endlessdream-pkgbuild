@@ -79,6 +79,20 @@ build_java_options() {
     options+=("$GC_OPTION")
   fi
 
+  # some extra optimization flags
+  OPTIMIZATION_FLAGS=(
+    -XX:+UseNUMA
+    -XX:+AlwaysPreTouch
+    -XX:-UseBiasedLocking
+  )
+
+  for flag in "${OPTIMIZATION_FLAGS[@]}"; do
+    FLAG_OPTION=$(test_flag "$flag")
+    if [ -n "$FLAG_OPTION" ]; then
+      options+=("$FLAG_OPTION")
+    fi
+  done
+
   if [[ -n "${JDK_JAVA_OPTIONS}" ]]; then
     while IFS= read -r opt; do
       [[ -n "$opt" ]] && options+=("$opt")
