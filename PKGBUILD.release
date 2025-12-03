@@ -8,7 +8,7 @@ source=("${_pkgbase}::git+https://github.com/seraxis/${_pkgbase}.git#tag=v${pkgv
         "https://patch-diff.githubusercontent.com/raw/seraxis/lr2oraja-endlessdream/pull/165.patch"
         "${_common_sources[@]}")
 sha256sums=('SKIP'
-            '292fbffaea21c4f8deff5c0d55c19710890b484d697b9a954276286d19475aa4'
+            '20c95c8f6eaa0637d450a36c5e0da047ccac393dc56c11db7a76bd28bc0422f8'
             "${_common_sha256sums[@]}")
 
 prepare() {
