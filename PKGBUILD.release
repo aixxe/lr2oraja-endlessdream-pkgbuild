@@ -1,23 +1,22 @@
 # Maintainer: aixxe <me@aixxe.net>
 source "$(dirname "${BASH_SOURCE[0]}")/PKGBUILD.inc"
 pkgname="${_pkgbase}"
-pkgver=0.3.0
+pkgver=0.4.0
 provides=()
 conflicts=()
 source=("${_pkgbase}::git+https://github.com/seraxis/${_pkgbase}.git#tag=v${pkgver}"
-        "https://patch-diff.githubusercontent.com/raw/seraxis/lr2oraja-endlessdream/pull/124.patch"
+        "https://patch-diff.githubusercontent.com/raw/seraxis/lr2oraja-endlessdream/pull/165.patch"
         "${_common_sources[@]}")
 sha256sums=('SKIP'
-            '4c70259212faa1f102fe71202c74965b2d42d9ea0f91331a2e471dfa47224f03'
+            '292fbffaea21c4f8deff5c0d55c19710890b484d697b9a954276286d19475aa4'
             "${_common_sha256sums[@]}")
 
 prepare() {
-  # need to use updated shadow plugin when building w/newer gradle
-  # this patch can be removed in the next version
-  cd "${srcdir}/${_pkgbase}"
-  patch -Np1 -i "${srcdir}/124.patch"
-
   _prepare
+
+  # fixes another issue when building w/newer gradle
+  cd "${srcdir}/${_pkgbase}"
+  patch -Np1 -i "${srcdir}/165.patch"
 }
 
 build() {
