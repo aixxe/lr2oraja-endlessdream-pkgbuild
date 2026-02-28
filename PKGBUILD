@@ -1,7 +1,7 @@
 # Maintainer: aixxe <me@aixxe.net>
 source "$(dirname "${BASH_SOURCE[0]}")/PKGBUILD.inc"
 pkgname="${_pkgbase}-git"
-pkgver=pre0.3.2.g7a845ea1
+pkgver=pre0.3.2.g598cb494
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=("git+https://github.com/seraxis/${_pkgbase}.git"
