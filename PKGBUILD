@@ -5,10 +5,8 @@ pkgver=pre0.3.2.g598cb494
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=("git+https://github.com/seraxis/${_pkgbase}.git"
-        "https://patch-diff.githubusercontent.com/raw/seraxis/lr2oraja-endlessdream/pull/165.patch"
         "${_common_sources[@]}")
 sha256sums=('SKIP'
-            'SKIP' # 165.patch - can change when new stuff gets merged
             "${_common_sha256sums[@]}")
 
 pkgver() {
@@ -20,10 +18,6 @@ pkgver() {
 
 prepare() {
   _prepare
-
-  # fixes another issue when building w/newer gradle
-  cd "${srcdir}/${_pkgbase}"
-  patch -Np1 -i "${srcdir}/165.patch"
 }
 
 build() {
