@@ -26,6 +26,7 @@ _prepare() {
 
   # no strict toolchain language version
   sed -i 's@languageVersion\.set(JavaLanguageVersion\.of(17))@// &@' core/build.gradle.kts
+  sed -i 's@languageVersion = JavaLanguageVersion\.of(17)@// &@' buildSrc/build.gradle.kts
 
   # fix for build error on gradle 9.x
   sed -i 's/id("org.gradle.kotlin.kotlin-dsl") version "4.2.1"/id("org.gradle.kotlin.kotlin-dsl") version "6.2.0"/' buildSrc/build.gradle.kts
